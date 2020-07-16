@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: docker/dockerfile.dev
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - 8080:80
+    networks:
+      network-credenciamentofront:
+        ipv4_address: 172.20.0.8
+      
+networks:
+  network-credenciamentofront:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24

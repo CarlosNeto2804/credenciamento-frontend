@@ -1,0 +1,11 @@
+FROM node:slim
+
+WORKDIR /usr/app
+
+ENV pathApi https://teste.com.br
+
+COPY . .
+
+RUN  npm i
+
+CMD ["npm" , "run" , "serve"]
