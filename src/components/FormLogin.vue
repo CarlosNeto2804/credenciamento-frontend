@@ -4,28 +4,31 @@
             <v-card-text>
               <v-form>
                     <v-text-field
+
                       label="Email"
                       prepend-icon="mdi-account"
                       v-model="email"
                       required
+                      @keypress.enter="login"
                     ></v-text-field>
                   <v-text-field
+                  @keypress.enter="login"
                   v-model="password"
                   prepend-icon="mdi-lock"
                   :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="show ? 'text' : 'password'"
                   name="input-10-1"
                   label="password"
-                  hint="At least 8 characters"
                   @click:append="show = !show "
                   ></v-text-field>
                     <v-btn
                       color="success"
+                      @click="login()"
+                      @keypress.enter="login"
                     >
                     Login
                     </v-btn>
-                  </v-form>
-
+                </v-form>
                 </v-card-text>
             </v-card>
 
@@ -39,5 +42,17 @@ export default {
     show: false,
     email: '',
   }),
+  methods: {
+    login() {
+      if (this.email === 'teste@teste.com' && this.password === 'pudim') {
+        this.$router.push('listevents');
+        this.$store.commit('change', false);
+        // this.$router.push('listevents');
+      } else if (!this.$store.state.hitlogin) {
+        this.$store.commit('change', true);
+      }
+    },
+  },
+
 };
 </script>
