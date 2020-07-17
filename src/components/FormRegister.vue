@@ -1,6 +1,6 @@
 <template>
 <v-card elevation="15">
-          <v-card-title>Login</v-card-title>
+          <v-card-title>Cadastrar</v-card-title>
             <v-card-text>
               <v-form>
                 <v-text-field
@@ -23,23 +23,27 @@
                     label="password"
                     @click:append="show = !show "
                   ></v-text-field>
-                  <v-text-field
-                    prepend-icon="mdi-smart-card"
-                    v-if="option"
-                    label="RGA"
-                  ></v-text-field>
-                  <v-text-field
-                  v-if="option"
-                  label="Curso"
-                  prepend-icon="mdi-school"
-                  ></v-text-field>
-                 <v-checkbox
-                    label="Estudante da UFMS?"
-                    v-model="option"
-                  ></v-checkbox>
-                  <v-btn
-                    class="mr-4"
-                    color="success"
+                  <v-expand-transition>
+                    <v-text-field
+                      prepend-icon="mdi-smart-card"
+                      v-if="option"
+                      label="RGA"
+                    ></v-text-field>
+                  </v-expand-transition>
+                  <v-expand-transition>
+                    <v-text-field
+                      v-if="option"
+                      label="Curso"
+                      prepend-icon="mdi-school"
+                    ></v-text-field>
+                  </v-expand-transition>
+                    <v-checkbox
+                      label="Estudante da UFMS?"
+                      v-model="option"
+                    ></v-checkbox>
+                    <v-btn
+                      class="mr-4"
+                      color="success"
                     >Cadastrar</v-btn>
                     <v-btn
                       outlined
@@ -55,6 +59,8 @@
 export default {
   name: 'FormLogin',
   data: () => ({
+    curso: '',
+    rga: '',
     option: false,
     password: '',
     show: false,
