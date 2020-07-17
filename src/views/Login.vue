@@ -3,7 +3,7 @@
 
       <v-row align="center"  justify="center" >
 
-        <v-col cols="12" lg=4 sm=4>
+        <v-col  lg=4 sm=4>
         <v-alert
               dismissible
               v-model=showAlert

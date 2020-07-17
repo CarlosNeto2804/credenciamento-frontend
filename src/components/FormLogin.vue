@@ -3,15 +3,14 @@
           <v-card-title>Login</v-card-title>
             <v-card-text>
               <v-form>
-                    <v-text-field
-
-                      label="Email"
-                      prepend-icon="mdi-account"
-                      v-model="email"
-                      required
-                      @keypress.enter="login"
-                    ></v-text-field>
-                  <v-text-field
+                <v-text-field
+                  label="Email"
+                  prepend-icon="mdi-account"
+                  v-model="email"
+                  required
+                  @keypress.enter="login"
+                ></v-text-field>
+                <v-text-field
                   @keypress.enter="login"
                   v-model="password"
                   prepend-icon="mdi-lock"
@@ -20,17 +19,21 @@
                   name="input-10-1"
                   label="password"
                   @click:append="show = !show "
-                  ></v-text-field>
-                    <v-btn
-                      color="success"
-                      @click="login()"
-                      @keypress.enter="login"
-                    >
-                    Login
-                    </v-btn>
-                </v-form>
-                </v-card-text>
-            </v-card>
+                ></v-text-field>
+                <v-btn
+                  class="mr-4"
+                  color="success"
+                  @click="login()"
+                  @keypress.enter="login"
+                >Login</v-btn>
+                <v-btn
+                  outlined
+                  color="primary"
+                  @click="register"
+                >Registrar</v-btn>
+              </v-form>
+            </v-card-text>
+  </v-card>
 
 </template>
 
@@ -43,7 +46,7 @@ export default {
     email: '',
   }),
   methods: {
-    login() {
+    async login() {
       if (this.email === 'teste@teste.com' && this.password === 'pudim') {
         this.$router.push('listevents');
         this.$store.commit('change', false);
@@ -51,6 +54,9 @@ export default {
       } else if (!this.$store.state.hitlogin) {
         this.$store.commit('change', true);
       }
+    },
+    register() {
+      this.$router.push('cadastrar');
     },
   },
 
