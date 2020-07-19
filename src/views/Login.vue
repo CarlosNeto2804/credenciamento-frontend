@@ -1,26 +1,33 @@
   <template>
-   <v-container fluid class="fill-height">
-
-      <v-row align="center"  justify="center" >
-
-        <v-col  lg=4 sm=4>
-        <v-alert
-              dismissible
-              v-model=showAlert
-              close-label="teste"
-              color="red"
-              type="error"
-              outlined
-              prominent
-              border="left"
-              transition="scale-transition"
-       >
-    Usuario ou Senha incorretos
-    </v-alert>
-          <FormLogin></FormLogin>
-        </v-col>
+    <div class="fill-height">
+    <v-container>
+      <v-row>
+        <v-row justify="center" align="start">
+           <v-alert
+           dense
+          dismissible
+          v-model=showAlert
+          color="red"
+          type="error"
+          outlined
+          prominent
+          border="left"
+          transition="scale-transition"
+          >
+                      Usuario ou Senha incorretos
+          </v-alert>
+        </v-row >
       </v-row>
-    </v-container>
+  </v-container >
+  <v-container class="fill-height">
+    <v-row>
+       <v-row  justify="center" align="center" >
+          <FormLogin></FormLogin>
+        </v-row>
+    </v-row>
+  </v-container>
+  </div>
+
 </template>
 
 <script>
@@ -38,5 +45,13 @@ export default {
       set(value) { this.$store.commit('change', value); },
     },
   },
+
 };
 </script>
+<style scoped>
+ .sandim{
+   height: 100%;
+   width: 100%;
+ }
+
+</style>

@@ -1,8 +1,10 @@
 <template>
-<v-card elevation="15">
+<v-card elevation="15" class="">
+
           <v-card-title>Login</v-card-title>
             <v-card-text>
               <v-form>
+
                 <v-text-field
                   label="Email"
                   prepend-icon="mdi-account"
@@ -29,7 +31,7 @@
                 <v-btn
                   outlined
                   color="primary"
-                  @click="register"
+                  to="cadastrar"
                 >Registrar</v-btn>
               </v-form>
             </v-card-text>
@@ -54,9 +56,6 @@ export default {
       } else if (!this.$store.state.hitlogin) {
         this.$store.commit('change', true);
       }
-    },
-    register() {
-      this.$router.push('cadastrar');
     },
   },
 

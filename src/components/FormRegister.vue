@@ -48,7 +48,7 @@
                     <v-btn
                       outlined
                       color="primary"
-                      @click="register"
+                      to="login"
                     >Voltar</v-btn>
               </v-form>
             </v-card-text>
@@ -75,9 +75,6 @@ export default {
       } else if (!this.$store.state.hitlogin) {
         this.$store.commit('change', true);
       }
-    },
-    register() {
-      this.$router.push('login');
     },
   },
 
