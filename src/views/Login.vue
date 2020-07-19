@@ -1,8 +1,8 @@
   <template>
     <div class="fill-height">
-    <v-container>
-      <v-row>
-        <v-row justify="center" align="start">
+    <v-container >
+      <v-row justify="center" align="start">
+        <v-col cols=12 lg=6  class="sandim">
            <v-alert
            dense
           dismissible
@@ -14,16 +14,16 @@
           border="left"
           transition="scale-transition"
           >
-                      Usuario ou Senha incorretos
+             Usuario ou Senha incorretos
           </v-alert>
-        </v-row >
+        </v-col >
       </v-row>
   </v-container >
   <v-container class="fill-height">
-    <v-row>
-       <v-row  justify="center" align="center" >
+    <v-row justify="center" align="center">
+       <v-col   cols=12 lg=6  >
           <FormLogin></FormLogin>
-        </v-row>
+        </v-col>
     </v-row>
   </v-container>
   </div>
@@ -50,8 +50,7 @@ export default {
 </script>
 <style scoped>
  .sandim{
-   height: 100%;
-   width: 100%;
+   position:fixed;
  }
 
 </style>

@@ -46,6 +46,8 @@ export default {
     password: '',
     show: false,
     email: '',
+    rga: '',
+    curso: '',
   }),
   methods: {
     async login() {
