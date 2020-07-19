@@ -7,17 +7,17 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+docker-compose up
 ```
 
-### Compiles and minifies for production
+### Creates docker image for production deploy
 ```
-npm run build
+docker build -f docker/dockerfile.prod  -t $USER/credenciamento-front
 ```
 
 ### Lints and fixes files
 ```
-npm run lint
+docker-compose exec app npm run lint
 ```
 
 ### Customize configuration
