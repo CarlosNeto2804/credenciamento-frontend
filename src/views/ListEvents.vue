@@ -92,5 +92,6 @@ export default {
     mini: true,
     //
   }),
+
 };
 </script>

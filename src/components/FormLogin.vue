@@ -51,12 +51,12 @@ export default {
   }),
   methods: {
     async login() {
-      if (this.email === 'teste@teste.com' && this.password === 'pudim') {
-        this.$router.push('listevents');
-        this.$store.commit('change', false);
-        // this.$router.push('listevents');
-      } else if (!this.$store.state.hitlogin) {
-        this.$store.commit('change', true);
+      if (this.email.trim() === 'teste@teste.com' && this.password.trim() === 'pudim') {
+        this.$store.dispatch('auth/isAuthorized', true);
+        this.$store.commit('auth/showAlert', false);
+        this.$router.push({ name: 'events' });
+      } else if (!this.$store.getters['auth/showAlert']) {
+        this.$store.commit('auth/showAlert', true);
       }
     },
   },

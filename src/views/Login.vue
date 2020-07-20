@@ -41,8 +41,12 @@ export default {
   },
   computed: {
     showAlert: {
-      get() { return this.$store.getters.hitlogin; },
-      set(value) { this.$store.commit('change', value); },
+      get() {
+        return this.$store.getters['auth/showAlert'];
+      },
+      set(value) {
+        this.$store.commit('auth/showAlert', value);
+      },
     },
   },
 
