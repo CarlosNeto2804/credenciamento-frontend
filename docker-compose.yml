@@ -10,11 +10,10 @@ services:
     ports:
       - 8080:80
     networks:
-      network-credenciamento:
+      network-credenciamentofront:
         ipv4_address: 172.20.0.8
-      
 networks:
-  network-credenciamento:
+  network-credenciamentofront:
     driver: bridge
     ipam:
       driver: default
