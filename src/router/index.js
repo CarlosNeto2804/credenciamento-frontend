@@ -48,23 +48,22 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log(`Authorized login ${store.getters['auth/isAuthorized']}`);
+  const authorized = store.getters['auth/isAuthorized'];
   if (to.name !== 'login'
       && to.name !== 'cadastrar'
       && to.name !== 'home'
-      && !store.getters['auth/isAuthorized']) next({ path: '/login' });
+      && !authorized) next({ path: '/login' });
   else {
+    console.log('aqui');
     next();
   }
 });
 
 router.beforeEach((to, from, next) => {
   console.log(`Authorized  events ${store.getters['auth/isAuthorized']}`);
-  if ((to.name === 'login' || to.name === 'cadastrar')
-        && store.getters['auth/isAuthorized']) {
-    next({ path: '/events' });
-  } else {
-    next();
-  }
+  const authorized = store.getters['auth/isAuthorized'];
+  if (to.name === 'cadastrar' && authorized) next({ path: '/events' });
+  else next();
 });
 
 export default router;

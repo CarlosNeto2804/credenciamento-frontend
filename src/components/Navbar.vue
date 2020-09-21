@@ -1,7 +1,8 @@
 <template>
   <v-container>
     <v-app-bar app color="primary" dark>
-      <v-toolbar-title>Credenciamento Login</v-toolbar-title>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Credenciamento</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
@@ -11,7 +12,7 @@
         <v-icon>mdi-heart</v-icon>
       </v-btn>
 
-      <v-btn icon>
+      <v-btn icon @click="logout">
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
@@ -19,8 +20,8 @@
       dark
       color="primary"
       app
-      :mini-variant.sync="mini"
-      permanent
+      temporary
+      absolute
       v-model="drawer"
     >
       <v-list-item class="px-2">
@@ -30,7 +31,7 @@
 
         <v-list-item-title>John Leider</v-list-item-title>
 
-        <v-btn icon @click.stop="mini = !mini">
+        <v-btn icon @click.stop="drawer = !drawer">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
       </v-list-item>
@@ -48,6 +49,9 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+        <div class="pa-2">
+          <v-btn color="indigo darken-3" block @click="logout">Logout</v-btn>
+        </div>
     </v-navigation-drawer>
   </v-container>
 </template>
@@ -56,14 +60,20 @@
 export default {
   data() {
     return {
-      drawer: true,
+      drawer: false,
       items: [
         { title: 'Home', icon: 'mdi-home-city' },
         { title: 'My Account', icon: 'mdi-account' },
         { title: 'Users', icon: 'mdi-account-group-outline' },
       ],
-      mini: true,
+      mini: false,
     };
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/isAuthorized', false);
+      this.$router.push({ name: 'login' });
+    },
   },
 };
 </script>
