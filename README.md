@@ -233,7 +233,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 <a  href="#">
 
-<img  src=https://avatars2.githubusercontent.com/u/41531003?s=460&v=4"  width="100px;"  alt="Foto do Vinicius Espindola no GitHub"/><br>
+<img  src="https://avatars2.githubusercontent.com/u/41531003?s=460&v=4"  width="100px;"  alt="Foto do Vinicius Espindola no GitHub"/><br>
 
 <sub>
 
