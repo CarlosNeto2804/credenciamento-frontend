@@ -1,6 +1,6 @@
 <template>
 <v-container>
-  <Navbar></Navbar>
+  <Navbar title="Eventos Acontecendo ou Que irão acontecer neste Momento" ></Navbar>
     <v-row>
           <Event></Event>
           <Event></Event>
@@ -13,8 +13,9 @@
     </v-container>
 </template>
 <script>
-import Event from '@/components/Event.vue';
-import Navbar from '@/components/Navbar.vue';
+
+import Event from '@/components/Event/Event.vue';
+import Navbar from '@/components/Shared/Navbar.vue';
 
 export default {
   name: 'App',

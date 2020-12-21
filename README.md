@@ -213,7 +213,7 @@ Para usar credenciamento, siga estas etapas:
 acessar navegador no localhost:8080
 
 ```
-
+[Aplicação parcialmente funcionando](https://peaceful-villani-9e88cd.netlify.app/login)
   
 
 Futuramente adicionar imagens do projeto

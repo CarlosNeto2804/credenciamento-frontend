@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import FormRegister from '@/components/FormRegister.vue';
+import FormRegister from '@/components/Account/FormRegister.vue';
 
 export default {
   components: {

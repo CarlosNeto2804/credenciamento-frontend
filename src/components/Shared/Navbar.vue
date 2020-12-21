@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-app-bar app color="primary" dark>
-      <v-toolbar-title>Credenciamento Login</v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
@@ -38,7 +38,8 @@
       <v-divider></v-divider>
 
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in listNavItems" :key="item.title"
+        :to="item.to" link >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -54,16 +55,35 @@
 
 <script>
 export default {
+  props: {
+    title: { String, required: true },
+  },
   data() {
     return {
       drawer: true,
-      items: [
-        { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'My Account', icon: 'mdi-account' },
-        { title: 'Users', icon: 'mdi-account-group-outline' },
+      NavBaritems: [
+        {
+          title: 'Home', icon: 'mdi-home', to: { name: 'events' }, role: 'normal',
+        },
+        {
+          title: 'Minha Conta', icon: 'mdi-account', to: { name: 'account' }, role: 'normal',
+        },
+        {
+          title: 'Criar Eventos', icon: 'mdi-calendar', to: { name: 'eventCreate' }, role: 'admin',
+        },
+        {
+          title: 'Emitir Certificados', icon: 'mdi-certificate', to: '', role: 'admin',
+        },
       ],
       mini: true,
     };
+  },
+  computed: {
+    listNavItems() {
+      const auth = false;
+      if (auth) return this.NavBaritems.filter((itemNavBar) => itemNavBar.role !== 'admin');
+      return this.NavBaritems;
+    },
   },
 };
 </script>

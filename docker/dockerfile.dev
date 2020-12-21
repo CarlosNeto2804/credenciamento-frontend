@@ -1,11 +1,14 @@
 FROM node:slim
 
-WORKDIR /usr/app
+RUN apt update && apt install git htop vim -y
 
-ENV pathApi https://teste.com.br
+WORKDIR /usr/app
 
 COPY . .
 
+
 RUN  npm i
+
+USER node
 
 CMD ["npm" , "run" , "serve"]

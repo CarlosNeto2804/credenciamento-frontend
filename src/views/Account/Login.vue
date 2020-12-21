@@ -32,7 +32,7 @@
 
 <script>
 // @ is an alias to /src
-import FormLogin from '@/components/FormLogin.vue';
+import FormLogin from '@/components/Account/FormLogin.vue';
 
 export default {
   name: 'Login',
