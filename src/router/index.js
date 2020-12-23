@@ -61,7 +61,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log(`Authorized login ${store.getters['auth/isAuthorized']}`);
-  const authorized = store.getters['auth/isAuthorized'];
   if (to.name !== 'login'
     && to.name !== 'cadastrar'
     && to.name !== 'home'

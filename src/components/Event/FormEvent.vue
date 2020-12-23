@@ -40,6 +40,7 @@
             readonly
             v-bind="attrs"
             v-on="on"
+            hint="YYYY-MM-DD"
           ></v-text-field>
         </template>
         <v-date-picker
@@ -82,6 +83,7 @@
             readonly
             v-bind="attrs"
             v-on="on"
+            hint="YYYY-MM-DD"
           ></v-text-field>
         </template>
         <v-date-picker
@@ -160,6 +162,8 @@ export default {
   methods: {
     submit() {
       console.log(this.dateInit);
+      let step = this.$store.getters['event/step'];
+      this.$store.commit('event/step', step += 1);
     },
   },
   mounted() {
