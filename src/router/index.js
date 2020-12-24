@@ -7,6 +7,7 @@ import NotFound from '@/views/Errors/404.vue';
 import RegisterEvent from '@/views/Event/Register.vue';
 import Login from '@/views/Account/Login.vue';
 import Account from '@/views/Account/Account.vue';
+import Activity from '@/views/Activity/Activity.vue';
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,11 @@ const routes = [
     path: '/evento/criar',
     name: 'eventCreate',
     component: RegisterEvent,
+  },
+  {
+    path: '/:event/atividade',
+    name: 'activityCreate',
+    component: Activity,
   },
   {
     path: '/cadastrar',
