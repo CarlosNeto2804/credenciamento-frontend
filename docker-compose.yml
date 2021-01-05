@@ -12,37 +12,6 @@ services:
     networks:
       network-credenciamentofront:
         ipv4_address: 172.20.0.8
-  api:
-    image: vinny1892/credenciamento-api
-    ports:
-      - 8002:8000
-    networks:
-      network-credenciamentofront:
-        ipv4_address: 172.20.0.7  
-  postgres:
-    image: postgres
-    container_name: postgres
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: example
-    networks:
-      network-credenciamentofront:
-        ipv4_address: 172.20.0.6    
-  pgadmin4:
-    container_name: pgAdmin4
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: teste@teste.org
-      PGADMIN_DEFAULT_PASSWORD: 123
-    depends_on:
-      - postgres
-    ports:
-      - 80:80
-    networks:
-      network-credenciamentofront:
-        ipv4_address: 172.20.0.9
 networks: 
   network-credenciamentofront:
     driver: bridge

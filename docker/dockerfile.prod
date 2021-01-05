@@ -8,7 +8,7 @@ RUN npm run build
 
 FROM nginx:alpine as production-stage
 
-RUN apt update && apt install git htop vim -y
+#RUN apk add install git htop vim -y
 
 EXPOSE 443
 RUN mkdir /app
