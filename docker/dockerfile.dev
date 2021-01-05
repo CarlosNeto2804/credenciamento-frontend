@@ -1,4 +1,7 @@
-FROM node:slim
+  
+# [Choice] Node.js version: 14, 12, 10
+ARG VARIANT=14
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:${VARIANT}
 
 RUN apt update && apt install git htop vim -y
 
@@ -6,9 +9,10 @@ WORKDIR /usr/app
 
 COPY . .
 
-
 RUN  npm i
 
-USER node
+#USER node
+
+EXPOSE 80
 
 CMD ["npm" , "run" , "serve"]

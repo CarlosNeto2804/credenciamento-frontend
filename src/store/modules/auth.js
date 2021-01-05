@@ -20,7 +20,7 @@ export default {
   actions: {
     isAuthorized({ commit }, payload) {
       const data = sessionStorage.getItem('isAuthorized');
-      if (data === null) {
+      if (data !== payload) {
         sessionStorage.setItem('isAuthorized', payload);
         commit('isAuthorized', payload);
       } else {

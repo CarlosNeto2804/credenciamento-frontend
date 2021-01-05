@@ -7,6 +7,7 @@ import NotFound from '@/views/Errors/404.vue';
 import RegisterEvent from '@/views/Event/Register.vue';
 import Login from '@/views/Account/Login.vue';
 import Account from '@/views/Account/Account.vue';
+import Activity from '@/views/Activity/Activity.vue';
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ const routes = [
     component: RegisterEvent,
   },
   {
+    path: '/:event/atividade',
+    name: 'activityCreate',
+    component: Activity,
+  },
+  {
     path: '/cadastrar',
     name: 'cadastrar',
     component: Register,
@@ -66,6 +72,7 @@ router.beforeEach((to, from, next) => {
     && to.name !== 'home'
     && !store.getters['auth/isAuthorized']) next({ path: '/login' });
   else {
+    console.log('aqui');
     next();
   }
 });

@@ -22,16 +22,96 @@
            <v-icon slot="prepend"  color="#CFAF7B" >mdi-card-text</v-icon>
         </v-textarea>
         <v-row>
-        <v-col  lg="4">
-          Selecionar Data Inicial e Final do Evento
-          <v-date-picker
-            color="#CFAF7B"
-            :landscape=orientationDatePicker
-            :min="minDateRegisterEvent"
-            v-model="dates"
-            range></v-date-picker>
+        <v-col cols="12" lg="4" sm="12">
+          <v-menu
+            ref="menuDateInit"
+            v-model="menuDateInit"
+            :close-on-content-click="false"
+            :return-value.sync="dateInit"
+            transition="scale-transition"
+            offset-y
+            min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="dateInit"
+            label="Data Inicial"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            hint="YYYY-MM-DD"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="dateInit"
+          no-title
+          scrollable
+          :min="minDateRegisterOrFinalEvent"
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="menu = false"
+          >
+            Cancel
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.menuDateInit.save(dateInit)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+                <v-menu
+            ref="menuDateFinal"
+            v-model="menuDateFinal"
+            :close-on-content-click="false"
+            :return-value.sync="dateFinal"
+            transition="scale-transition"
+            offset-y
+            min-width="290px"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="dateFinal"
+            label="Data Final"
+            prepend-icon="mdi-calendar"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            hint="YYYY-MM-DD"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="dateFinal"
+          no-title
+          scrollable
+          :min="minDateRegisterOrFinalEvent"
+        >
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            color="primary"
+            @click="menu = false"
+          >
+            Cancelar
+          </v-btn>
+          <v-btn
+            text
+            color="primary"
+            @click="$refs.menuDateFinal.save(dateFinal)"
+          >
+            OK
+          </v-btn>
+        </v-date-picker>
+      </v-menu>
+
         </v-col>
-        <v-col  lg="6">
+        <v-col cols="12"  lg="6" sm="12">
         <v-text-field
             label="Link Instagram (Opcional)"
             color="red"
@@ -66,19 +146,24 @@
 </template>
 
 <script>
+
 export default {
+
   data() {
     return {
-      dates: [],
+      dateInit: '',
+      dateFinal: '',
       nameEvent: '',
       descriptionEvent: '',
       orientationDatePicker: false,
-      minDateRegisterEvent: new Date().toISOString(),
+      minDateRegisterOrFinalEvent: new Date().toISOString(),
     };
   },
   methods: {
     submit() {
-      console.log(this.dates);
+      console.log(this.dateInit);
+      let step = this.$store.getters['event/step'];
+      this.$store.commit('event/step', step += 1);
     },
   },
   mounted() {
