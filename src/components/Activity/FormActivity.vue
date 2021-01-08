@@ -1,7 +1,6 @@
 <template>
 
 <v-card elevation="15" class="">
-
             <v-card-text>
               <v-form>
                 <v-text-field

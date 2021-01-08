@@ -49,16 +49,6 @@ export default {
       },
     },
   },
-  methods: {
-    async seila() {
-      const response = await this.$http.get('event');
-      console.log(response);
-    },
-  },
-  mounted() {
-    this.seila();
-  },
-
 };
 </script>
 <style scoped>
